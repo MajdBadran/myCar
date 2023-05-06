@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycar/home/editProfile.dart';
 // import '../Widget/ButtonWidget.dart';
 import '../Widget/ProfileWidget.dart';
 import '../Widget/userInfo.dart';
 import '../model/userPreferences.dart';
-import '../model/userprofile.dart';
+// import '../model/userprofile.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class Profile extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                // Get.to(editProfile());
+                Get.to(EditProfile());
               },
               icon: Icon(Icons.edit),
             )
