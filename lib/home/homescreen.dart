@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mycar/auth/login.dart';
 import 'package:mycar/home/homepage.dart';
 import 'package:mycar/home/profile.dart';
-import 'package:mycar/home/settings.dart';
+import 'package:mycar/setting.dart/settings.dart';
 import 'package:mycar/home/workshop.dart';
 
 class HomeScreen extends StatefulWidget {

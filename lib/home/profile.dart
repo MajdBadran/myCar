@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../Widget/ButtonWidget.dart';
+import 'package:get/get.dart';
+// import '../Widget/ButtonWidget.dart';
 import '../Widget/ProfileWidget.dart';
+import '../Widget/userInfo.dart';
 import '../model/userPreferences.dart';
 import '../model/userprofile.dart';
 
@@ -17,6 +19,14 @@ class Profile extends StatelessWidget {
             "صفحتي",
             style: TextStyle(fontFamily: "Mirza", fontSize: 30, height: 8),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                // Get.to(editProfile());
+              },
+              icon: Icon(Icons.edit),
+            )
+          ],
         ),
         body: ListView(
           physics: BouncingScrollPhysics(),
@@ -33,28 +43,19 @@ class Profile extends StatelessWidget {
             ),
             buildName(user),
             SizedBox(
-              height: 12,
+              height: 15,
             ),
+            Divider(
+              height: 20,
+              thickness: 2,
+            ),
+            buildInfo(user),
             // Center(child: UpgardeButton()),
           ],
         ));
   }
 
-  Widget buildName(User user) => Column(
-        children: [
-          Text(
-            user.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            "${user.number}",
-            style: TextStyle(color: Colors.grey),
-          )
-        ],
-      );
+
 
   // Widget UpgardeButton() => ButtonWidget(
   //       text: "تحديث الحساب",

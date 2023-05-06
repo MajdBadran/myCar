@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/auth/login.dart';
+import 'package:mycar/setting.dart/problem.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -158,7 +159,9 @@ class _SettingsState extends State<Settings> {
                   ),
                   IconButton(
                       alignment: Alignment.centerLeft,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(Problem());
+                      },
                       icon: Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.grey,

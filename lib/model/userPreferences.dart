@@ -6,7 +6,7 @@ class UserPreferences {
       image: "images/user.jpg",
       name: 'Abode Tahan',
       number: 0998933572,
-      type: 'مستخدم',
+      type: 'عادي',
       location: "دمشق, القزاز",
       about: "");
 }
