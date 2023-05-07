@@ -5,7 +5,7 @@ class UserPreferences {
   static User myUser = User(
       image: "images/user.jpg",
       name: 'Abode Tahan',
-      number: 0998933572,
+      number: 0969614321,
       type: 'عادي',
       location: "دمشق, القزاز",
       about: "");

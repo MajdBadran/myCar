@@ -33,23 +33,17 @@ class Profile extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              child: ProfileWidget(
-                imagePath: user.image,
-                onClicked: () async {},
-              ),
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child:ProfileWidget(
+                  imagePath: user.image,
+                  onClicked: () async {},
+                ),
+
             ),
             SizedBox(
-              height: 12,
+              height: 10,
             ),
-            buildName(user),
-            SizedBox(
-              height: 15,
-            ),
-            Divider(
-              height: 20,
-              thickness: 2,
-            ),
+
             buildInfo(user),
             // Center(child: UpgardeButton()),
           ],

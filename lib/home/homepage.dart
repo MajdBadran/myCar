@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycar/home/companies.dart';
+import 'package:mycar/home/office.dart';
 import 'package:mycar/home/workshop.dart';
 import '../auth/login.dart';
 // import 'package:http/http.dart' as http;
@@ -70,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                           child: Text("ورشات الصيانة"),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {Get.to(Office());},
                           child: Text("المكاتب"),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
-                          child: Text("الوكالات"),
+                          onPressed: () {Get.to(Companies());},
+                          child: Text("الشركات"),
                         ),
                       ],
                     ),

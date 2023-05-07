@@ -6,8 +6,16 @@ class WorkShop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(child: Text("WorkShop")),
+      appBar: AppBar(
+        title: Text(
+          "ورشات الصيانة",
+          style: TextStyle(fontFamily: "Mirza", fontSize: 30),
+        ),
+      ),
+      body: Text(
+        "WorkShop",
+        style: TextStyle(fontSize: 30),
+      ),
     );
   }
 }
