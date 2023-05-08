@@ -30,7 +30,6 @@ class Profile extends StatelessWidget {
           ],
         ),
         body: ListView(
-          physics: BouncingScrollPhysics(),
           children: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20),

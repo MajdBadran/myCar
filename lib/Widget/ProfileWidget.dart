@@ -1,4 +1,4 @@
-import 'dart:io';
+// import 'dart:io';
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -11,46 +11,26 @@ class ProfileWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
     return Center(
         child: Stack(
       children: [
         buildImage(),
-        Positioned(bottom: 0, right: 4, child: buildEditIcon(color)),
       ],
     ));
   }
 
   Widget buildImage() {
-    final image = AssetImage(imagePath);
     return ClipOval(
       child: Material(
-        color: Colors.transparent,
-        child: Ink.image(
-          image: image,
-          fit: BoxFit.cover,
-          width: 117,
-          height: 117,
-          child: InkWell(
-            onTap: onClicked,
-          ),
+          child: Image(
+        image: AssetImage(
+          imagePath,
         ),
-      ),
+        width: 117,
+        height: 117,
+      )),
     );
   }
-
-  Widget buildEditIcon(Color color) => buildCircle(
-      color: Colors.white,
-      all: 3,
-      child: buildCircle(
-        all: 8,
-        color: color,
-        child: Icon(
-          Icons.edit,
-          color: Colors.white,
-          size: 20,
-        ),
-      ));
 
   buildCircle(
           {required double all, required Color color, required Widget child}) =>
@@ -62,5 +42,3 @@ class ProfileWidget extends StatelessWidget {
         ),
       );
 }
-
-

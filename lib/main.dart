@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:mycar/home/homescreen.dart';
-// import 'home/profile.dart';
+// import 'package:mycar/home/homescreen.dart';
+
+// import 'home/editProfile.dart';
+import 'home/profile.dart';
 // import 'package:mycar/home/userprofile.dart';
 // import 'package:mycar/auth/login.dart';
 // import 'package:mycar/home/homepage.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       //الغاء النسخة التجريبية
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: Profile(),
       theme: ThemeData(primaryColor: Colors.blueAccent),
       darkTheme: ThemeData.dark(),
       localizationsDelegates: [

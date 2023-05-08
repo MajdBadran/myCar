@@ -77,7 +77,7 @@ Widget buildInfo(User user) => Padding(
                 width: 7,
               ),
               Text(
-                user.type,
+                user.type as String,
                 style: TextStyle(fontSize: 18),
               ),
             ],
