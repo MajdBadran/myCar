@@ -5,6 +5,11 @@ class TermsOfUse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(),body: Center(child: Text("سياسة أستخدام التطبيق"),),);
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text("سياسة أستخدام التطبيق"),
+      ),
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/home/editProfile.dart';
-// import '../Widget/ButtonWidget.dart';
+// import '../Widget/buttonAuth.dart';
 import '../Widget/ProfileWidget.dart';
 import '../Widget/userInfo.dart';
 import '../model/userPreferences.dart';

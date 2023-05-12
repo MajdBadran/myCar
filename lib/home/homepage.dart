@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/home/companies.dart';
-import 'package:mycar/home/office.dart';
 import 'package:mycar/home/workshop.dart';
 import '../auth/login.dart';
 // import 'package:http/http.dart' as http;
@@ -60,29 +59,29 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-               Container(
-                 margin: EdgeInsets.symmetric(horizontal: 17),
-                 child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Get.to(WorkShop());
-                          },
-                          child: Text("ورشات الصيانة"),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {Get.to(Office());},
-                          child: Text("المكاتب"),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {Get.to(Companies());},
-                          child: Text("الشركات"),
-                        ),
-                      ],
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 17),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(WorkShop());
+                      },
+                      child: Text("ورشات الصيانة"),
                     ),
-               ),
-              Column(children: [],)
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(Companies());
+                      },
+                      child: Text("الشركات"),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                children: [],
+              )
             ],
           ),
         ));

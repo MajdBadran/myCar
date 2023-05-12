@@ -1,77 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mycar/controller/password_controller.dart';
+import '../Widget/textFormField.dart';
+import '../function/validInPut.dart';
 
 class Password extends StatelessWidget {
   const Password({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    PasswordControllerImp controller = Get.put(PasswordControllerImp());
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 100, bottom: 2),
-            padding: EdgeInsets.only(bottom: 5),
-            child: Text(
-              "أدخل بريدك الإلكتروني لنرسل لك الرمز",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-            ),
-          ),
-          SizedBox(height: 10,),
-          Form(
-              child: Column(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Form(
+          key: controller.formstate,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 3, horizontal: 25),
-                    prefixIcon: Icon(Icons.lock),
-                    hintText: "أدخل بريدك الإلكتروني",
-                    helperStyle: TextStyle(fontSize: 5),
-                    label: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 2),
-                        child: Text(
-                          "كلمة السر",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
+              Row(
+                children: [
+                  Text(
+                    "أدخل رقم هاتفك لنرسل لك الرمز",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ],
+              ),
+              CustomTextFormField(
+                valid: (val) {
+                  return validInPut(val!, 9, 15, "phone");
+                },
+                hinttext: 'أدخل رقم الهاتف',
+                labletext: 'رقم الهاتف',
+                iconData: Icons.phone,
+                ObscureText: false,
+                textInputType: TextInputType.number,
+                textInputAction: TextInputAction.go,
+                mycontroller: null,
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    controller.verifycode();
+                  },
+                  child: Text("إرسال"),
+                ),
               ),
             ],
-          )),
-          SizedBox(
-            height: 5,
           ),
-          Container(
-            margin: EdgeInsets.all(8),
-            child: Row(
-              children: [
-                Text("لم تتلقى الرمز؟ "),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    " إرسال مرة اخرى",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                textStyle: TextStyle(fontSize: 20),
-              ),
-              onPressed: () {
-                Navigator.of(context).pushReplacementNamed("homepage");
-              },
-              child: Text("إرسال"),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

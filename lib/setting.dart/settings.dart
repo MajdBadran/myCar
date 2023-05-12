@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/auth/login.dart';
+import 'package:mycar/home/editProfile.dart';
 import 'package:mycar/setting.dart/problem.dart';
+
+import '../auth/password.dart';
+import '../function/themeService.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -49,7 +53,7 @@ class _SettingsState extends State<Settings> {
         child: ListView(
           children: [
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Row(
               children: [
@@ -75,25 +79,50 @@ class _SettingsState extends State<Settings> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 9),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  Text(
-                    "تسجيل دخول",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey[600]),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "تسجيل دخول",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey[600]),
+                      ),
+                      IconButton(
+                          alignment: Alignment.centerLeft,
+                          onPressed: () {
+                            Get.to(LogIn());
+                          },
+                          icon: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.grey,
+                          )),
+                    ],
                   ),
-                  IconButton(
-                      alignment: Alignment.centerLeft,
-                      onPressed: () {
-                        Get.to(LogIn());
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.grey,
-                      ))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "تغير معلومات الحساب",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey[600]),
+                      ),
+                      IconButton(
+                          alignment: Alignment.centerLeft,
+                          onPressed: () {
+                            Get.to(EditProfile());
+                          },
+                          icon: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.grey,
+                          )),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -116,7 +145,7 @@ class _SettingsState extends State<Settings> {
                 ),
                 SizedBox(
                   height: 10,
-                )
+                ),
               ],
             ),
             Divider(
@@ -252,8 +281,17 @@ class _SettingsState extends State<Settings> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
-                      height: 10,
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: InkWell(
+                        onTap: () {
+                          Get.to(Password());
+                        },
+                        child: Text(
+                          "نسيت كلمة السر؟",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -311,6 +349,7 @@ class _SettingsState extends State<Settings> {
               // trackColor: Colors.grey,
               onChanged: (bool newvalue) {
                 onChange(newvalue);
+                ThemeService().changeTheme();
               },
             ),
           ),

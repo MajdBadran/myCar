@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mycar/auth/login.dart';
-import 'package:mycar/home/homescreen.dart';
 import 'package:get/get.dart';
+// import 'package:mycar/auth/login.dart';
+// import 'package:mycar/auth/paymentPage.dart';
+import 'package:mycar/function/validInPut.dart';
+import '../Widget/buttonAuth.dart';
+import '../Widget/textFormField.dart';
+import '../controller/signUp_controller.dart';
+// import 'package:mycar/home/homescreen.dart';
 // import 'dart:io';
 
 class SignUp extends StatefulWidget {
@@ -12,18 +17,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  GlobalKey<FormState> formstate = new GlobalKey<FormState>();
-  send() {
-    var formdata = formstate.currentState;
-    if (formdata!.validate()) {
-      print("valid");
-    } else {
-      print("Not Valid");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    SignUoControllerImp controller = Get.put(SignUoControllerImp());
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -32,133 +28,101 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'images/Logo.png',
-                  height: 150,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                        prefixIcon: Icon(Icons.account_circle),
-                        hintText: "أدخل الإسم",
-                        helperStyle: TextStyle(fontSize: 3),
-                        label: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 2),
-                            child: Text(
-                              "الإسم",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20))),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+            child: Form(
+              key: controller.formstate,
+              child: Column(
+                children: [
+                  Image.asset(
+                    'images/Logo.png',
+                    height: 150,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: TextFormField(
-                    textInputAction: TextInputAction.next,
-                    obscureText: true,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 25),
-                        prefixIcon: Icon(Icons.lock),
-                        hintText: "أدخل البريد الإلكتروني",
-                        helperStyle: TextStyle(fontSize: 5),
-                        label: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 2),
-                            child: Text(
-                              "البريد",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20))),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    textInputAction: TextInputAction.go,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                        prefixIcon: Icon(Icons.account_circle),
-                        hintText: "أدخل كلمة المرور",
-                        helperStyle: TextStyle(fontSize: 3),
-                        label: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 2),
-                            child: Text(
-                              "كلمة المرور",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20))),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      textStyle: TextStyle(fontSize: 20),
-                    ),
-                    onPressed: () {
-                      Get.offAll(HomeScreen());
-                    },
-                    child: Text("تسجيل"),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(" هل لديك حساب؟ "),
-                    InkWell(
-                      onTap: () {
-                        Get.off(LogIn());
-                      },
-                      child: Text(
-                        "تسجيل دخول",
-                        style: TextStyle(color: Colors.blue),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: CustomTextFormField(
+                        valid: (val) {
+                          return validInPut(val!, 2, 50, "name");
+                        },
+                        hinttext: 'أدخل الإسم',
+                        labletext: 'الإسم',
+                        iconData: Icons.account_circle,
+                        ObscureText: false,
+                        textInputType: TextInputType.name,
+                        textInputAction: TextInputAction.next,
+                        mycontroller: controller.name,
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: CustomTextFormField(
+                        valid: (val) {
+                          return validInPut(val!, 9, 15, "phone");
+                        },
+                        hinttext: 'أدخل رقم الهاتف',
+                        labletext: 'رقم الهاتف',
+                        iconData: Icons.phone,
+                        ObscureText: false,
+                        textInputType: TextInputType.phone,
+                        textInputAction: TextInputAction.next,
+                        mycontroller: controller.phone,
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: CustomTextFormField(
+                        valid: (val) {
+                          return validInPut(val!, 8, 50, "password");
+                        },
+                        hinttext: 'أدخل كلمة المرور',
+                        labletext: 'كلمة المرور',
+                        iconData: Icons.lock,
+                        ObscureText: true,
+                        textInputType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
+                        mycontroller: controller.password,
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: CustomTextFormField(
+                        valid: (val) {
+                          return validInPut(val!, 8, 50, "password");
+                        },
+                        hinttext: 'تأكيد كلمة المرور',
+                        labletext: 'كلمة المرور',
+                        iconData: Icons.lock,
+                        ObscureText: true,
+                        textInputType: TextInputType.number,
+                        textInputAction: TextInputAction.go,
+                        mycontroller: controller.password,
+                      )),
+                  Column(
+                    children: [
+                      ButtomAuth(
+                        text: 'تسجيل',
+                        onPressed: () {
+                          controller.signup();
+                        },
                       ),
-                    ),
-                  ],
-                )
-              ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("هل لديك حساب بالفعل؟"),
+                          InkWell(
+                            onTap: () {
+                              controller.goToLogIn();
+                            },
+                            child: Text(
+                              "تسجيل دخول",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ));
   }
 }
-
-//// validator: (pass){
-//                     //   if (pass!.length > 8)
-//                     //   {
-//                     //     return "يجب ان تكون كلمة المرور اكثر من 8 محارف";
-//                     //   }
-//                     // },
-
-// validator: (pass){
-//   if (pass!.length > 8)
-//   {
-//     return "يجب ان تكون كلمة المرور اكثر من 8 محارف";
-//   }
-// },
