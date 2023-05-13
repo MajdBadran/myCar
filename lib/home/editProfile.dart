@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/setting.dart/settings.dart';
 import '../Widget/ProfileWidget.dart';
-import '../model/userPreferences.dart';
+import '../model/userprofile_model.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -39,7 +39,6 @@ class _EditProfileState extends State<EditProfile> {
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: ProfileWidget(
                     imagePath: editimage.image,
-                    onClicked: () async {},
                   ),
                 ),
                 SizedBox(

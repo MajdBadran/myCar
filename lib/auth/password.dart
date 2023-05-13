@@ -34,7 +34,7 @@ class Password extends StatelessWidget {
                 hinttext: 'أدخل رقم الهاتف',
                 labletext: 'رقم الهاتف',
                 iconData: Icons.phone,
-                ObscureText: false,
+                obscureText: false,
                 textInputType: TextInputType.number,
                 textInputAction: TextInputAction.go,
                 mycontroller: null,

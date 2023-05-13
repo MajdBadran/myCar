@@ -96,11 +96,10 @@ flutter:
   # example:
   fonts:
     - family: Mirza
-    - family: Courgette
 
       fonts:
-        - asset: fonts/Courgette-Regular.ttf
-        - asset: fonts/Mirza-SemiBold.ttf
+        - asset: fonts/Mirza-Medium.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

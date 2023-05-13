@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/home/editProfile.dart';
-// import '../Widget/buttonAuth.dart';
 import '../Widget/ProfileWidget.dart';
 import '../Widget/userInfo.dart';
-import '../model/userPreferences.dart';
-// import '../model/userprofile.dart';
+import '../model/userprofile_model.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -33,11 +31,9 @@ class Profile extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20),
-              child:ProfileWidget(
-                  imagePath: user.image,
-                  onClicked: () async {},
-                ),
-
+              child: ProfileWidget(
+                imagePath: user.image,
+              ),
             ),
             SizedBox(
               height: 10,
@@ -48,11 +44,4 @@ class Profile extends StatelessWidget {
           ],
         ));
   }
-
-
-
-  // Widget UpgardeButton() => ButtonWidget(
-  //       text: "تحديث الحساب",
-  //       onClicked: () {},
-  //     );
 }

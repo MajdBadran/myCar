@@ -6,6 +6,7 @@ import 'package:mycar/home/homescreen.dart';
 abstract class LogInController extends GetxController {
   login();
   goToSignUp();
+  showPassword();
 }
 
 class LogInControllerImp extends LogInController {
@@ -13,6 +14,12 @@ class LogInControllerImp extends LogInController {
 
   late TextEditingController name;
   late TextEditingController password;
+
+  bool isShowPassword = true;
+  showPassword() {
+    isShowPassword = isShowPassword == true ? false : true;
+    update();
+  }
 
   @override
   login() {

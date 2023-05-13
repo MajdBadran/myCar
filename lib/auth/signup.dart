@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycar/function/alertexit.dart';
 // import 'package:mycar/auth/login.dart';
 // import 'package:mycar/auth/paymentPage.dart';
 import 'package:mycar/function/validInPut.dart';
@@ -27,99 +28,100 @@ class _SignUpState extends State<SignUp> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
-            child: Form(
-              key: controller.formstate,
-              child: Column(
-                children: [
-                  Image.asset(
-                    'images/Logo.png',
-                    height: 150,
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CustomTextFormField(
-                        valid: (val) {
-                          return validInPut(val!, 2, 50, "name");
-                        },
-                        hinttext: 'أدخل الإسم',
-                        labletext: 'الإسم',
-                        iconData: Icons.account_circle,
-                        ObscureText: false,
-                        textInputType: TextInputType.name,
-                        textInputAction: TextInputAction.next,
-                        mycontroller: controller.name,
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CustomTextFormField(
-                        valid: (val) {
-                          return validInPut(val!, 9, 15, "phone");
-                        },
-                        hinttext: 'أدخل رقم الهاتف',
-                        labletext: 'رقم الهاتف',
-                        iconData: Icons.phone,
-                        ObscureText: false,
-                        textInputType: TextInputType.phone,
-                        textInputAction: TextInputAction.next,
-                        mycontroller: controller.phone,
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CustomTextFormField(
-                        valid: (val) {
-                          return validInPut(val!, 8, 50, "password");
-                        },
-                        hinttext: 'أدخل كلمة المرور',
-                        labletext: 'كلمة المرور',
-                        iconData: Icons.lock,
-                        ObscureText: true,
-                        textInputType: TextInputType.number,
-                        textInputAction: TextInputAction.next,
-                        mycontroller: controller.password,
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CustomTextFormField(
-                        valid: (val) {
-                          return validInPut(val!, 8, 50, "password");
-                        },
-                        hinttext: 'تأكيد كلمة المرور',
-                        labletext: 'كلمة المرور',
-                        iconData: Icons.lock,
-                        ObscureText: true,
-                        textInputType: TextInputType.number,
-                        textInputAction: TextInputAction.go,
-                        mycontroller: controller.password,
-                      )),
-                  Column(
-                    children: [
-                      ButtomAuth(
-                        text: 'تسجيل',
-                        onPressed: () {
-                          controller.signup();
-                        },
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("هل لديك حساب بالفعل؟"),
-                          InkWell(
-                            onTap: () {
-                              controller.goToLogIn();
-                            },
-                            child: Text(
-                              "تسجيل دخول",
-                              style: TextStyle(color: Colors.blue),
+        body: WillPopScope(
+          onWillPop: AlertExitApp,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+              child: Form(
+                key: controller.formstate,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'images/Logo.png',
+                      height: 150,
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: CustomTextFormField(
+                          valid: (val) {
+                            return validInPut(val!, 2, 50, "name");
+                          },
+                          hinttext: 'أدخل الإسم',
+                          labletext: 'الإسم',
+                          iconData: Icons.account_circle,
+                          textInputType: TextInputType.name,
+                          textInputAction: TextInputAction.next,
+                          mycontroller: controller.name,
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: CustomTextFormField(
+                          valid: (val) {
+                            return validInPut(val!, 9, 15, "phone");
+                          },
+                          hinttext: 'أدخل رقم الهاتف',
+                          labletext: 'رقم الهاتف',
+                          iconData: Icons.phone,
+                          textInputType: TextInputType.phone,
+                          textInputAction: TextInputAction.next,
+                          mycontroller: controller.phone,
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: CustomTextFormField(
+                          valid: (val) {
+                            return validInPut(val!, 8, 50, "password");
+                          },
+                          hinttext: 'أدخل كلمة المرور',
+                          labletext: 'كلمة المرور',
+                          iconData: Icons.lock,
+                          obscureText: true,
+                          textInputType: TextInputType.number,
+                          textInputAction: TextInputAction.next,
+                          mycontroller: controller.password,
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: CustomTextFormField(
+                          valid: (val) {
+                            return validInPut(val!, 8, 50, "password");
+                          },
+                          hinttext: 'تأكيد كلمة المرور',
+                          labletext: 'كلمة المرور',
+                          iconData: Icons.lock,
+                          obscureText: true,
+                          textInputType: TextInputType.number,
+                          textInputAction: TextInputAction.go,
+                          mycontroller: controller.password,
+                        )),
+                    Column(
+                      children: [
+                        ButtomAuth(
+                          text: 'تسجيل',
+                          onPressed: () {
+                            controller.signup();
+                          },
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("هل لديك حساب بالفعل؟"),
+                            InkWell(
+                              onTap: () {
+                                controller.goToLogIn();
+                              },
+                              child: Text(
+                                "تسجيل دخول",
+                                style: TextStyle(color: Colors.blue),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

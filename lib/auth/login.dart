@@ -10,6 +10,7 @@ import '../function/validInPut.dart';
 // import '../function/validInPut.dart';
 // import 'package:mycar/auth/password.dart';
 // import 'package:mycar/home/homescreen.dart';
+// import 'package:mycar/function/alertexit.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -19,66 +20,57 @@ class LogIn extends StatefulWidget {
 }
 
 class _LoginState extends State<LogIn> {
-  // GlobalKey<FormState> formstate = new GlobalKey<FormState>();
-  // send() {
-  //   var formdata = formstate.currentState;
-  //   if (formdata!.validate()) {
-  //     print("valid");
-  //   } else {
-  //     print("Not Valid");
-  //   }
-  // }
   @override
   Widget build(BuildContext context) {
     LogInControllerImp cotroller = Get.put(LogInControllerImp());
     return Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text(
-              "تسجيل الدخول",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
+      appBar: AppBar(
+        title: Text(
+          "تسجيل الدخول",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
-            child: Form(
-              key: cotroller.formstate,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+          child: Form(
+            key: cotroller.formstate,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
                   Image.asset(
                     'images/Logo.png',
                     height: 150,
                   ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CustomTextFormField(
+                   CustomTextFormField(
                         hinttext: 'أدخل الإسم',
                         labletext: 'الإسم',
                         iconData: Icons.account_circle,
-                        ObscureText: false,
                         textInputType: TextInputType.name,
                         textInputAction: TextInputAction.next,
                         mycontroller: cotroller.name,
                         valid: (val) {
                           return validInPut(val!, 2, 50, "name");
                         },
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CustomTextFormField(
-                        valid: (val) {
-                          return validInPut(val!, 8, 50, "password");
-                        },
-                        hinttext: 'أدخل كلمة المرور',
-                        labletext: 'كلمة المرور',
-                        iconData: Icons.lock,
-                        ObscureText: true,
-                        mycontroller: cotroller.password,
-                        textInputType: TextInputType.number,
-                        textInputAction: TextInputAction.go,
-                      )),
+                      ),
+                   GetBuilder<LogInControllerImp>(
+                        builder: (cotroller) => CustomTextFormField(
+                          valid: (val) {
+                            return validInPut(val!, 8, 50, "password");
+                          },
+                          obscureText: cotroller.isShowPassword,
+                          onTapIcon: () {
+                            cotroller.showPassword();
+                          },
+                          hinttext: 'أدخل كلمة المرور',
+                          labletext: 'كلمة المرور',
+                          iconData: Icons.lock,
+                          mycontroller: cotroller.password,
+                          textInputType: TextInputType.number,
+                          textInputAction: TextInputAction.go,
+                        ),
+                      ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
@@ -115,6 +107,8 @@ class _LoginState extends State<LogIn> {
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
