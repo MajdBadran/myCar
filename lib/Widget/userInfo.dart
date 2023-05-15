@@ -77,7 +77,7 @@ Widget buildInfo(User user) => Padding(
                 width: 7,
               ),
               Text(
-                user.type as String,
+                "${user.type}",
                 style: TextStyle(fontSize: 18),
               ),
             ],
@@ -157,8 +157,13 @@ Widget buildInfo(User user) => Padding(
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
-                SizedBox(height: 10,),
-                Text("V1.3.0",style: TextStyle(fontSize: 13,fontWeight: FontWeight.w500),) ,
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "V1.3.0",
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                ),
               ],
             ),
           ),

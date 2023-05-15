@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mycar/function/alertexit.dart';
-// import 'package:mycar/auth/login.dart';
-// import 'package:mycar/auth/paymentPage.dart';
 import 'package:mycar/function/validInPut.dart';
 import '../Widget/buttonAuth.dart';
 import '../Widget/textFormField.dart';
 import '../controller/signUp_controller.dart';
-// import 'package:mycar/home/homescreen.dart';
-// import 'dart:io';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -28,9 +23,7 @@ class _SignUpState extends State<SignUp> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
-        body: WillPopScope(
-          onWillPop: AlertExitApp,
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
               child: Form(
@@ -125,6 +118,6 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
           ),
-        ));
+        );
   }
 }

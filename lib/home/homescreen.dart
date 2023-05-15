@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:mycar/auth/login.dart';
 import 'package:mycar/home/homepage.dart';
 import 'package:mycar/home/profile.dart';
 import 'package:mycar/setting.dart/settings.dart';
-// import 'package:mycar/home/workshop.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Center(
         child: listpage[currentPage],
       ),
@@ -52,4 +48,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

@@ -5,12 +5,6 @@ import 'package:mycar/controller/logIn_controller.dart';
 import '../Widget/buttonAuth.dart';
 import '../Widget/textFormField.dart';
 import '../function/validInPut.dart';
-// import 'signup.dart';
-// import 'package:get_storage/get_storage.dart';
-// import '../function/validInPut.dart';
-// import 'package:mycar/auth/password.dart';
-// import 'package:mycar/home/homescreen.dart';
-// import 'package:mycar/function/alertexit.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
