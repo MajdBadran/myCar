@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/auth/password.dart';
 import 'package:mycar/controller/logIn_controller.dart';
-import '../Widget/buttonAuth.dart';
-import '../Widget/textFormField.dart';
+import '../Widget/buttonAuth_Widget.dart';
+import '../Widget/textFormField_Widget.dart';
 import '../function/validInPut.dart';
 
 class LogIn extends StatefulWidget {

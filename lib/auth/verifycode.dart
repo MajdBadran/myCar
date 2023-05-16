@@ -3,7 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:mycar/auth/resetpass.dart';
 import 'package:mycar/function/alertexit.dart';
-// import '../Widget/textFormField.dart';
+// import '../Widget/textFormField_Widget.dart';
 // import '../function/validInPut.dart';
 
 class VerifyCode extends StatelessWidget {

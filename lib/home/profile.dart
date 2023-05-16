@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/home/editProfile.dart';
-import '../Widget/ProfileWidget.dart';
-import '../Widget/userInfo.dart';
+import '../Widget/imageProfile_Widget.dart';
+import '../Widget/userInfo_Widget.dart';
 import '../model/userprofile_model.dart';
 
 class Profile extends StatelessWidget {

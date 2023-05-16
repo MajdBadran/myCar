@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/function/alertexit.dart';
 import 'package:mycar/home/homescreen.dart';
-import '../Widget/textFormField.dart';
+import '../Widget/textFormField_Widget.dart';
 import '../function/validInPut.dart';
 
 class ResetPass extends StatelessWidget {

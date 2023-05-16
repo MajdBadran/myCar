@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/setting.dart/settings.dart';
-import '../Widget/ProfileWidget.dart';
+import '../Widget/imageProfile_Widget.dart';
 import '../model/userprofile_model.dart';
 
 class EditProfile extends StatefulWidget {

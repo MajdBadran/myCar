@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mycar/function/alertexit.dart';
 import 'package:mycar/home/companies.dart';
 import 'package:mycar/home/workshop.dart';
-import '../Widget/InfoPost_Widget.dart';
+import '../Widget/post_Widget.dart';
 import '../auth/login.dart';
 
 class HomePage extends StatefulWidget {

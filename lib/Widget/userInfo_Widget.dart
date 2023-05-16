@@ -105,6 +105,8 @@ Widget buildInfo(User user) => Padding(
               Text(
                 user.location,
                 style: TextStyle(fontSize: 18),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
@@ -124,6 +126,8 @@ Widget buildInfo(User user) => Padding(
               Text(
                 "نبذة:",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               SizedBox(
                 width: 7,

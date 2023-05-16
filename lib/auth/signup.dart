@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/function/validInPut.dart';
-import '../Widget/buttonAuth.dart';
-import '../Widget/textFormField.dart';
+import '../Widget/buttonAuth_Widget.dart';
+import '../Widget/textFormField_Widget.dart';
 import '../controller/signUp_controller.dart';
 
 class SignUp extends StatefulWidget {

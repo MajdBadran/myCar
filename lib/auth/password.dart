@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/controller/password_controller.dart';
-import '../Widget/textFormField.dart';
+import '../Widget/textFormField_Widget.dart';
 import '../function/validInPut.dart';
 
 class Password extends StatelessWidget {

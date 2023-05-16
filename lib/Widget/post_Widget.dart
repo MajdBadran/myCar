@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/home/displayPost.dart';
-import '../model/postInfo_Model.dart';
+import '../model/postInfo_model.dart';
 import '../model/userprofile_model.dart';
-import 'ProfileWidget.dart';
+import 'imageProfile_Widget.dart';
 
 class InfoPost extends StatelessWidget {
   const InfoPost({Key? key}) : super(key: key);
@@ -13,7 +13,9 @@ class InfoPost extends StatelessWidget {
     final post = PostPreferences.PostInfo;
     final user = UserPreferences.myUser;
     return InkWell(
-      onTap: (){Get.to(DisplayPost());},
+      onTap: () {
+        Get.to(DisplayPost());
+      },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
@@ -70,7 +72,11 @@ class InfoPost extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
-                        Text("${post.location}"),
+                        Text(
+                          "${post.location}",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ],
                     ),
                     Row(
@@ -79,7 +85,11 @@ class InfoPost extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             )),
-                        Text("${post.description}"),
+                        Text(
+                          "${post.description}",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ],
                     ),
                   ],
