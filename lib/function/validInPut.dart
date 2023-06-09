@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+// التحقق من قيود كلمة المرور
 validInPut(String val, int min, int max, String type) {
   if (type == "username") {
     if (!GetUtils.isUsername(val)) {

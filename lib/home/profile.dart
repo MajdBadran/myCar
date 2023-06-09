@@ -7,11 +7,9 @@ import '../model/userprofile_model.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final user = UserPreferences.myUser;
-
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -38,9 +36,7 @@ class Profile extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-
             buildInfo(user),
-            // Center(child: UpgardeButton()),
           ],
         ));
   }

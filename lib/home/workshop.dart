@@ -11,10 +11,7 @@ class WorkShop extends StatelessWidget {
           title: Center(
             child: Text(
               "ورشات الصيانة",
-              style: TextStyle(fontSize: 25),
-            ),
-          ),
-        ),
+              style: TextStyle(fontSize: 25),),),),
         body: ListView(children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
@@ -24,9 +21,7 @@ class WorkShop extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     WorkShopWidget(),
-                    WorkShopWidget(),
-                  ],
-                ),
+                    WorkShopWidget(),],),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -69,9 +64,7 @@ class WorkShop extends StatelessWidget {
                     WorkShopWidget(),
                   ],
                 ),
-              ],
-            ),
-          ),
+              ],),),
         ]));
   }
 }

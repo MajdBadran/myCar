@@ -1,10 +1,12 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycar/function/alertexit.dart';
 import 'package:mycar/home/companies.dart';
+import 'package:mycar/home/createPost.dart';
 import 'package:mycar/home/workshop.dart';
 import '../Widget/post_Widget.dart';
-import '../auth/login.dart';
+import '../model/postInfo_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,8 +16,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var selectedIt = null;
   @override
   Widget build(BuildContext context) {
+    final post = PostPreferences.PostInfo;
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -31,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(LogIn());
+            Get.to(CreatePost());
           },
           child: Icon(Icons.add),
         ),
@@ -44,18 +49,30 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                   child: Expanded(
-                    child: TextFormField(
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 1,
+                    child:DropdownSearch<String>(
+                      popupProps: PopupProps.menu(
+                        showSelectedItems: true,
+                        showSearchBox: true,
+                        disabledItemFn: (String s) => s.startsWith('I'),
+                      ),
+                      items: [post.nameCar],
+                      dropdownDecoratorProps: DropDownDecoratorProps(
+                        dropdownSearchDecoration: InputDecoration(
+                            border:
+                            OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                          prefixIcon: InkWell(
+                            child: Icon(Icons.youtube_searched_for),
+                            onTap: () {
+
+                            },
                           ),
-                          prefixIcon: Icon(Icons.search),
-                          hintText: "اسم السيارة",
-                          hintStyle: TextStyle(color: Colors.black38),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15))),
+                          labelText: " ابحث عن سيارة او اكتب اسمها",
+                        ),
+                      ),
+                      onChanged: (post){
+                        print(post);
+                      },
+                      selectedItem:selectedIt ,
                     ),
                   ),
                 ),
@@ -194,3 +211,19 @@ class _HomePageState extends State<HomePage> {
 // )),
 // ),
 // ),
+
+
+//
+//TextFormField(
+//                       keyboardType: TextInputType.text,
+//                       decoration: InputDecoration(
+//                           floatingLabelBehavior: FloatingLabelBehavior.always,
+//                           contentPadding: EdgeInsets.symmetric(
+//                             vertical: 1,
+//                           ),
+//                           prefixIcon: Icon(Icons.search),
+//                           hintText: "اسم السيارة",
+//                           hintStyle: TextStyle(color: Colors.black38),
+//                           border: OutlineInputBorder(
+//                               borderRadius: BorderRadius.circular(15))),
+//                     ),

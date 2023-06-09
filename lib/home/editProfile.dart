@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mycar/setting.dart/settings.dart';
-import '../Widget/imageProfile_Widget.dart';
+// import '../Widget/imageProfile_Widget.dart';
 import '../model/userprofile_model.dart';
 
 class EditProfile extends StatefulWidget {
@@ -13,6 +15,44 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final editimage = UserPreferences.myUser;
+  final ImagePicker picker = ImagePicker();
+  late File imageFile = editimage.image as File;
+  _showOption(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(Icons.image),
+                      title: Text("الاستديو"),
+                      onTap: () => _imageFromGellary(context),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.camera_alt_outlined),
+                      title: Text("الكاميرة"),
+                      onTap: () => _imageFromCamera(context),
+                    ),
+                  ],
+                ),
+              ),
+            ));
+  }
+
+  Future _imageFromGellary(BuildContext context) async {
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      imageFile = image as File;
+    });
+  }
+
+  Future _imageFromCamera(BuildContext context) async {
+    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      imageFile = image as File;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +75,49 @@ class _EditProfileState extends State<EditProfile> {
             },
             child: ListView(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: ProfileWidget(
-                    imagePath: editimage.image,
+                Center(
+                  child: InkWell(
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        Container(
+                          width: 130,
+                          height: 130,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 4,
+                                color: Colors.white,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    spreadRadius: 2,
+                                    blurRadius: 10,
+                                    color: Colors.black.withOpacity(0.2)),
+                              ],
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(editimage.image))),
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border:
+                                      Border.all(width: 4, color: Colors.white),
+                                  color: Colors.black45),
+                              child: Icon(
+                                Icons.camera_alt_outlined,
+                                color: Colors.white,
+                              ),
+                            )),
+                      ],
+                    ),
+                    onTap: () => _showOption(context),
                   ),
                 ),
                 SizedBox(
@@ -110,6 +189,6 @@ class _EditProfileState extends State<EditProfile> {
             hintStyle: TextStyle(
                 fontSize: 17, fontWeight: FontWeight.bold, color: Colors.grey),
           ),
-        )
+        ),
       ]));
 }

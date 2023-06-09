@@ -150,23 +150,26 @@ Widget buildInfo(User user) => Padding(
             thickness: 1,
           ),
           Center(
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
                   onTap: () {
                     Get.to(TermsOfUse());
                   },
                   child: Text(
-                    "سياسة إستخدام التطبيق والشروط",
+                    "هل تواجه مشكلة؟",
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "V1.3.0",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                InkWell(
+                  onTap: () {
+                    Get.to(TermsOfUse());
+                  },
+                  child: Text(
+                    "سياسة التطبيق والشروط",
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
               ],
             ),

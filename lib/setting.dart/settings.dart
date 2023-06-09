@@ -198,6 +198,30 @@ class _SettingsState extends State<Settings> {
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "تواصل مع المطور",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600]),
+                  ),
+                  IconButton(
+                      alignment: Alignment.centerLeft,
+                      onPressed: () {
+                        Get.to(Problem());
+                      },
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey,
+                      ))
+                ],
+              ),
+            ),
             buildSetting("الوضع الداكن", val1, onChangeFunction1),
             SizedBox(
               height: 5,
@@ -220,6 +244,20 @@ class _SettingsState extends State<Settings> {
                 child: Text("تسجيل خروج"),
               ),
             ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "جميع الحقوق محفوظة لشركة My Car",
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                ),
+                SizedBox(height: 10,),
+                Text(
+                  "V1.3.0",
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                ),
+              ],
+            )
           ],
         ),
       ),

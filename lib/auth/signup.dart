@@ -59,7 +59,7 @@ class _SignUpState extends State<SignUp> {
                           textInputType: TextInputType.phone,
                           textInputAction: TextInputAction.next,
                           mycontroller: controller.phone,
-                        )),
+                        )), //رقم الهاتف
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: CustomTextFormField(
@@ -73,7 +73,7 @@ class _SignUpState extends State<SignUp> {
                           textInputType: TextInputType.number,
                           textInputAction: TextInputAction.next,
                           mycontroller: controller.password,
-                        )),
+                        )), //كلمة المرور
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: CustomTextFormField(
@@ -87,7 +87,7 @@ class _SignUpState extends State<SignUp> {
                           textInputType: TextInputType.number,
                           textInputAction: TextInputAction.go,
                           mycontroller: controller.password,
-                        )),
+                        )),//تاكيد كلمة المرور
                     Column(
                       children: [
                         ButtomAuth(

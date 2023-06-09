@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mycar/home/profile.dart';
 
 class ProfileWidget extends StatelessWidget {
   final String imagePath;
   const ProfileWidget({
     Key? key,
     required this.imagePath,
-
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Stack(
-      children: [
-        buildImage(),
-      ],
+        child: InkWell(
+          onTap: (){
+            Get.to(Profile());
+          },
+      child: buildImage(),
     ));
   }
 
@@ -24,8 +26,8 @@ class ProfileWidget extends StatelessWidget {
         image: AssetImage(
           imagePath,
         ),
-        width: 117,
-        height: 117,
+        width: 120,
+        height: 120,
       )),
     );
   }
