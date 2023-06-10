@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mycar/function/alertexit.dart';
 import 'package:mycar/home/companies.dart';
 import 'package:mycar/home/createPost.dart';
+import 'package:mycar/home/home_page_controller.dart';
 import 'package:mycar/home/workshop.dart';
 import '../Widget/post_Widget.dart';
 import '../model/postInfo_model.dart';
@@ -16,100 +17,118 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final HomePageController homePageController = HomePageController();
   var selectedIt = null;
+
+  @override
+  void initState() {
+    super.initState();
+    homePageController.onInit();
+  }
+
   @override
   Widget build(BuildContext context) {
     final post = PostPreferences.PostInfo;
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "سيارتي",
-            style: TextStyle(fontSize: 30, fontFamily: "Mirza"),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.filter_alt),
-            )
-          ],
+      appBar: AppBar(
+        title: Text(
+          "سيارتي",
+          style: TextStyle(fontSize: 30, fontFamily: "Mirza"),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(CreatePost());
-          },
-          child: Icon(Icons.add),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-        body: WillPopScope(
-          onWillPop: AlertExitApp,
-          child: Container(
-            child: ListView(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-                  child: Expanded(
-                    child:DropdownSearch<String>(
-                      popupProps: PopupProps.menu(
-                        showSelectedItems: true,
-                        showSearchBox: true,
-                        disabledItemFn: (String s) => s.startsWith('I'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.filter_alt),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(CreatePost());
+        },
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          homePageController.getPost();
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                child: DropdownSearch<String>(
+                  popupProps: PopupProps.menu(
+                    showSelectedItems: true,
+                    showSearchBox: true,
+                    disabledItemFn: (String s) => s.startsWith('I'),
+                  ),
+                  items: [post.nameCar],
+                  dropdownDecoratorProps: DropDownDecoratorProps(
+                    dropdownSearchDecoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      prefixIcon: InkWell(
+                        child: Icon(Icons.youtube_searched_for),
+                        onTap: () {},
                       ),
-                      items: [post.nameCar],
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                        dropdownSearchDecoration: InputDecoration(
-                            border:
-                            OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                          prefixIcon: InkWell(
-                            child: Icon(Icons.youtube_searched_for),
-                            onTap: () {
-
-                            },
-                          ),
-                          labelText: " ابحث عن سيارة او اكتب اسمها",
-                        ),
-                      ),
-                      onChanged: (post){
-                        print(post);
-                      },
-                      selectedItem:selectedIt ,
+                      labelText: " ابحث عن سيارة او اكتب اسمها",
                     ),
                   ),
+                  onChanged: (post) {
+                    print(post);
+                  },
+                  selectedItem: selectedIt,
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 17),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Get.to(WorkShop());
-                        },
-                        child: Text("ورشات الصيانة"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Get.to(Companies());
-                        },
-                        child: Text("الشركات"),
-                      ),
-                    ],
-                  ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 17),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(WorkShop());
+                      },
+                      child: Text("ورشات الصيانة"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(Companies());
+                      },
+                      child: Text("الشركات"),
+                    ),
+                  ],
                 ),
-                Divider(
-                  thickness: 2,
-                  height: 5,
-                ),
-                InfoPost(),
-                InfoPost(),
-                InfoPost(),
-                InfoPost(),
-                InfoPost(),
-                InfoPost(),
-              ],
-            ),
+              ),
+              Divider(
+                thickness: 2,
+                height: 5,
+              ),
+              Expanded(
+                  child: SizedBox(
+                child: Obx(() => homePageController.loading.value
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : homePageController.posts.isEmpty
+                        ? Center(
+                            child: Text("no data"),
+                          )
+                        : ListView.builder(
+                            itemCount: homePageController.posts.length,
+                            itemBuilder: (c, index) => InfoPost(
+                                post: homePageController.posts[index]),
+                          )),
+              ))
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -211,7 +230,6 @@ class _HomePageState extends State<HomePage> {
 // )),
 // ),
 // ),
-
 
 //
 //TextFormField(

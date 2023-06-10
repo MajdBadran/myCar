@@ -37,6 +37,7 @@ class WorkShopWidget extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
+                      color: Colors.black,
                       fontFamily: 'Mirza'),
                 ),
                 Row(
@@ -44,7 +45,9 @@ class WorkShopWidget extends StatelessWidget {
                   children: [
                     Text(
                       "الرقم:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
                       "${WorkInfo.number}",
@@ -57,9 +60,12 @@ class WorkShopWidget extends StatelessWidget {
                   children: [
                     Text(
                       "الموقع:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+
                     ),
                     Text(
                       WorkInfo.location,

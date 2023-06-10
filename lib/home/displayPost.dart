@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycar/core/common/models/post_model.dart';
 import 'package:mycar/setting.dart/problem.dart';
 import '../model/postInfo_model.dart';
  import 'package:url_launcher/url_launcher.dart';
 
 class DisplayPost extends StatelessWidget {
-  const DisplayPost({Key? key}) : super(key: key);
+  final PostModel postModel;
+  const DisplayPost({Key? key, required this.postModel}) : super(key: key);
   final double coverHeight = 220;
 
   @override
@@ -26,6 +28,7 @@ class DisplayPost extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
+
                       color: Colors.grey,
                       child: Image(
                         width: double.infinity,
@@ -71,7 +74,7 @@ class DisplayPost extends StatelessWidget {
                           width: 7,
                         ),
                         Text(
-                          "${post.price}",
+                          "${postModel.car.price}",
                           style: TextStyle(color: Colors.red),
                         ),
                       ],
@@ -97,7 +100,7 @@ class DisplayPost extends StatelessWidget {
                         SizedBox(
                           width: 7,
                         ),
-                        Text(post.name),
+                        Text(postModel.user.name),
                       ],
                     ),
                     Divider(
@@ -121,31 +124,7 @@ class DisplayPost extends StatelessWidget {
                         SizedBox(
                           width: 7,
                         ),
-                        Text("${post.number}"),
-                      ],
-                    ),
-                    Divider(
-                      height: 30,
-                      thickness: 2,
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          color: Colors.blueAccent,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "الموقع:",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        SizedBox(
-                          width: 7,
-                        ),
-                        Text(post.location),
+                        Text("${postModel.user.phone}"),
                       ],
                     ),
                     Divider(
@@ -162,14 +141,14 @@ class DisplayPost extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          "الوصف:",
+                          "تاريخ الانتاج:",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                         SizedBox(
                           width: 7,
                         ),
-                        Text(post.description),
+                        Text(postModel.dateOfPublish),
                       ],
                     ),
                     Divider(
@@ -213,10 +192,7 @@ class DisplayPost extends StatelessWidget {
                       onPressed: () {
                         sendWhatsApp();
                       },
-                      icon: Image(
-                        width: 50,
-                        image: AssetImage("images/iconWhatsApp.png"),
-                      ),
+                      icon: Icon(Icons.chat,color: Colors.black),
                       label: Text(
                         "محادثة على الواتساب",
                         style: TextStyle(color: Colors.green),

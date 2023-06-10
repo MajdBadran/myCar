@@ -10,7 +10,7 @@ class CompanyWidget extends StatelessWidget {
     final companyInfo = CompanyPreferences.companyInfo;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 6),
+      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
       child: Container(
           height: 220,
           width: 165,
@@ -37,6 +37,7 @@ class CompanyWidget extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
+                      color: Colors.black,
                       fontFamily: 'Mirza'),
                 ),
                 Row(
@@ -44,7 +45,9 @@ class CompanyWidget extends StatelessWidget {
                   children: [
                     Text(
                       "الرقم:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
                       "${companyInfo.number}",
@@ -57,7 +60,9 @@ class CompanyWidget extends StatelessWidget {
                   children: [
                     Text(
                       "الموقع:",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
                       companyInfo.location,

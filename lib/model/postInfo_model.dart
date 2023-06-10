@@ -16,15 +16,7 @@ class Post {
       required this.image});
 }
 
-// List<Post> posts = [
-//   Post(
-//     number: 0969614321,
-//       name: "Abode Tahan",
-//       location: 'دمشق, الحميدية',
-//       description: "مارسيدس موديل2022 خالية العلام",
-//       image: "images/car.jpeg");
-//   ),
-// ];
+
 class PostPreferences {
   static Post PostInfo = Post(
       number: 0969614321,

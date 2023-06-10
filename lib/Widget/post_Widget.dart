@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycar/core/common/models/post_model.dart';
 import 'package:mycar/home/displayPost.dart';
 import '../model/postInfo_model.dart';
 import '../model/userprofile_model.dart';
 import 'imageProfile_Widget.dart';
 
 class InfoPost extends StatelessWidget {
-  const InfoPost({Key? key}) : super(key: key);
+  final PostModel post;
+  const InfoPost({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final post = PostPreferences.PostInfo;
-    final user = UserPreferences.myUser;
+
     return InkWell(
       onTap: () {
-        Get.to(DisplayPost());
+        Get.to(DisplayPost(
+          postModel: post,
+        ));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5),
@@ -41,16 +44,17 @@ class InfoPost extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        CircleAvatar(
-                          child: ProfileWidget(imagePath: user.image),
-                          radius: 15,
-                        ),
+                        // CircleAvatar(
+                        //   child: ProfileWidget(imagePath: post.user.image),
+                        //   radius: 15,
+                        // ),
                         SizedBox(
                           width: 8,
                         ),
                         Text(
-                          post.name,
+                          "${post.user.name}",
                           style: TextStyle(
+                              color: Colors.black,
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Mirza"),
@@ -61,10 +65,11 @@ class InfoPost extends StatelessWidget {
                       children: [
                         Text("السعر: ",
                             style: TextStyle(
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             )),
                         Text(
-                          "${post.price}",
+                          "${post.car.price}",
                           style: TextStyle(color: Colors.red),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -76,9 +81,10 @@ class InfoPost extends StatelessWidget {
                         Text("الرقم: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             )),
                         Text(
-                          "${post.number}",
+                          "${post.car.brandId}",
                           style: TextStyle(color: Colors.blueAccent),
                         ),
                       ],
@@ -87,38 +93,44 @@ class InfoPost extends StatelessWidget {
                       children: [
                         Text("اسم السيارة: ",
                             style: TextStyle(
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             )),
                         Text(
-                          post.nameCar,
+                          "${ post.car.brandType.name}",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle( color: Colors.black,),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        Text("الموقع: ",
+                        Text("الصنف: ",
                             style: TextStyle(
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             )),
                         Text(
-                          post.location,
+                         "${post.car.typeOfShop.name}",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle( color: Colors.black,),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        Text("الوصف: ",
+                        Text("المحرك: ",
                             style: TextStyle(
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             )),
                         Text(
-                          post.description,
+                          " ${post.car.fuelType.type} ",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle( color: Colors.black,),
                         ),
                       ],
                     ),
@@ -139,7 +151,7 @@ class InfoPost extends StatelessWidget {
                               color: Colors.black.withOpacity(0.1))
                         ]),
                     child: Image(
-                      image: AssetImage(post.image),
+                      image: AssetImage("images/car.jpeg"),
                     )),
               ],
             )),

@@ -5,6 +5,11 @@ class Problem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(),body: Text(""),);
+    return Scaffold(
+      appBar: AppBar(),
+      body:Center(child:
+      Text("تواصل معنا",
+      style: TextStyle(fontSize: 30),),
+      ));
   }
 }

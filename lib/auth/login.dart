@@ -37,34 +37,34 @@ class _LoginState extends State<LogIn> {
                     'images/Logo.png',
                     height: 150,
                   ),
-                   CustomTextFormField(
-                        hinttext: 'أدخل الإسم',
-                        labletext: 'الإسم',
-                        iconData: Icons.account_circle,
-                        textInputType: TextInputType.name,
-                        textInputAction: TextInputAction.next,
-                        mycontroller: cotroller.name,
-                        valid: (val) {
-                          return validInPut(val!, 2, 50, "name");
-                        },
-                      ),
-                   GetBuilder<LogInControllerImp>(
-                        builder: (cotroller) => CustomTextFormField(
-                          valid: (val) {
-                            return validInPut(val!, 8, 50, "password");
-                          },
-                          obscureText: cotroller.isShowPassword,
-                          onTapIcon: () {
-                            cotroller.showPassword();
-                          },
-                          hinttext: 'أدخل كلمة المرور',
-                          labletext: 'كلمة المرور',
-                          iconData: Icons.lock,
-                          mycontroller: cotroller.password,
-                          textInputType: TextInputType.number,
-                          textInputAction: TextInputAction.go,
-                        ),
-                      ),
+                  CustomTextFormField(
+                    hinttext: 'أدخل الإسم',
+                    labletext: 'الإسم',
+                    iconData: Icons.account_circle,
+                    textInputType: TextInputType.name,
+                    textInputAction: TextInputAction.next,
+                    mycontroller: cotroller.name,
+                    valid: (val) {
+                      return validInPut(val!, 2, 50, "name");
+                    },
+                  ),
+                  GetBuilder<LogInControllerImp>(
+                    builder: (cotroller) => CustomTextFormField(
+                      valid: (val) {
+                        return validInPut(val!, 8, 50, "password");
+                      },
+                      obscureText: cotroller.isShowPassword,
+                      onTapIcon: () {
+                        cotroller.showPassword();
+                      },
+                      hinttext: 'أدخل كلمة المرور',
+                      labletext: 'كلمة المرور',
+                      iconData: Icons.lock,
+                      mycontroller: cotroller.password,
+                      textInputType: TextInputType.number,
+                      textInputAction: TextInputAction.go,
+                    ),
+                  ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
@@ -91,12 +91,16 @@ class _LoginState extends State<LogIn> {
                       ],
                     ),
                   ),
-                  ButtomAuth(
-                    text: 'تسجيل دخول',
-                    onPressed: () {
-                      cotroller.login();
-                    },
-                  )
+                  Obx(() => cotroller.loading.value
+                      ? CircularProgressIndicator()
+                      : ButtomAuth(
+                          text: 'تسجيل دخول',
+                          onPressed: () async {
+                            cotroller.switchLoading();
+                           await cotroller.login();
+                            cotroller.switchLoading();
+                          },
+                        ))
                 ],
               ),
             ),
