@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
-      //اللغات التي سوف يدعمها التطبيق
+      //اللغات التي  سوف يدعمها التطبيق
       supportedLocales: [Locale("ar"), Locale("en")],
       locale: Locale("ar", "AE"),
     );
