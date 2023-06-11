@@ -16,6 +16,6 @@ class CompanyPreferences {
     name: 'Company KIA',
     number: 2244550,
     desc: 'وكالة كيا رسميا في سوريا',
-    location: "دمشق, طريق الطار",
+    location: "دمشق, طريق المطار",
   );
 }
