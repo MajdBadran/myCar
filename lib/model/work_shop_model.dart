@@ -12,10 +12,10 @@ class WorkShop {
 
 class WorkShopPreferences {
   static WorkShop workinfo = WorkShop(
-    image: "images/workshop.jpg",
+    image: "images/workshop.png",
     name: 'ورشة النصر',
     number: 0969614321,
-    desc: 'ورشة النصر تصليح كافة انواع السيارات الحديثة بأحدث الطرق',
+    desc: 'ورشة النصر المتنقلة تصليح كافة انواع السيارات الحديثة بأحدث الطرق',
     location: "دمشق, حوش بلاس",
   );
 }

@@ -10,7 +10,7 @@ class CompanyWidget extends StatelessWidget {
     final companyInfo = CompanyPreferences.companyInfo;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 7),
       child: Container(
           height: 220,
           width: 165,

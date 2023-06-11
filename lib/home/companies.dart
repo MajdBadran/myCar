@@ -18,7 +18,7 @@ class Companies extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: Column(
               children: [
                 Row(

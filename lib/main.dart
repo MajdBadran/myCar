@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:mycar/auth/login.dart';
 import 'package:mycar/core/managers/constant/cash_keys_constant.dart';
+import 'package:mycar/home/homescreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'function/themeService.dart';
 import 'package:get_storage/get_storage.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeService().getThemeMode(),
       //الغاء النسخة التجريبية
       debugShowCheckedModeBanner: false,
-      home: HomePageTemp(),
+      home: HomeScreen(),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate

@@ -12,7 +12,7 @@ class Company {
 
 class CompanyPreferences {
   static Company companyInfo = Company(
-    image: "images/kia.jpeg",
+    image: "images/download.jpeg",
     name: 'Company KIA',
     number: 2244550,
     desc: 'وكالة كيا رسميا في سوريا',
